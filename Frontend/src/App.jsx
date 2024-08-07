@@ -3,11 +3,12 @@ import './App.css';
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import HomePage from './components/Homepage';
 import Login from './components/Login';
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import { useSelector, useDispatch } from "react-redux";
 import io from "socket.io-client";
 import { setSocket } from './redux/socketSlice.js';
 import { setOnlineUsers } from './redux/userSlice.js';
+import { URL } from './url.js'; 
 
 const router = createBrowserRouter([
   {
@@ -22,8 +23,7 @@ const router = createBrowserRouter([
     path: "/login",
     element: <Login />
   },
-
-])
+]);
 
 function App() {
   const { authUser } = useSelector(store => store.user);
@@ -32,7 +32,7 @@ function App() {
 
   useEffect(() => {
     if (authUser) {
-      const socketio = io('http://localhost:8080', {
+      const socketio = io(URL, { 
         query: {
           userId: authUser._id
         }
@@ -40,7 +40,7 @@ function App() {
       dispatch(setSocket(socketio));
 
       socketio?.on('getOnlineUsers', (onlineUsers) => {
-        dispatch(setOnlineUsers(onlineUsers))
+        dispatch(setOnlineUsers(onlineUsers));
       });
       return () => socketio.close();
     } else {
@@ -56,7 +56,6 @@ function App() {
     <div className="p-4 h-screen flex items-center justify-center">
       <RouterProvider router={router} />
     </div>
-
   );
 }
 
