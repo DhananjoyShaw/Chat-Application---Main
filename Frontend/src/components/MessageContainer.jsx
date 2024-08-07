@@ -34,7 +34,6 @@ const MessageContainer = () => {
                     <div className='md:min-w-[550px] flex flex-col justify-center items-center'>
                         <h1 className='text-4xl text-white font-bold'>Hi,{authUser?.fullName} </h1>
                         <h1 className='text-2xl text-white'>Let's start conversation</h1>
-
                     </div>
                 )
             }
