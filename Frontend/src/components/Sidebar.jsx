@@ -1,19 +1,18 @@
-import React, { useState } from 'react'
+import React, { useState } from "react"
 import { BiSearchAlt2 } from "react-icons/bi";
-import OtherUsers from './OtherUsers';
+import OtherUsers from "./OtherUsers";
 import axios from "axios";
 import toast from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
-import { setAuthUser, setOtherUsers, setSelectedUser } from '../redux/userSlice.js';
-import { setMessages } from '../redux/messageSlice.js';
-import { URL } from '../url.js';
+import { setAuthUser, setOtherUsers, setSelectedUser } from "../redux/userSlice.js";
+import { setMessages } from "../redux/messageSlice.js";
+import { URL } from "../url.js";
 
-const Sidebar = () => {
+const Sidebar = ({ onUserSelect }) => {
     const [search, setSearch] = useState("");
     const { otherUsers } = useSelector(store => store.user);
     const dispatch = useDispatch();
-
     const navigate = useNavigate();
 
     const logoutHandler = async () => {
@@ -29,6 +28,7 @@ const Sidebar = () => {
             console.log(error);
         }
     }
+
     const searchSubmitHandler = (e) => {
         e.preventDefault();
         const conversationUser = otherUsers?.find((user) => user.fullName.toLowerCase().includes(search.toLowerCase()));
@@ -38,23 +38,24 @@ const Sidebar = () => {
             toast.error("User not found!");
         }
     }
+
     return (
-        <div className='border-r border-slate-500 p-4 flex flex-col'>
-            <form onSubmit={searchSubmitHandler} action="" className='flex items-center gap-2'>
+        <div className="flex flex-col border border-gray-900 p-4 md:h-[85vh] h-[650px] w-[300px]" style={{ borderRight: '1px solid #64748b' }}>
+            <form onSubmit={searchSubmitHandler} action="" className="flex items-center gap-2">
                 <input
                     value={search}
                     onChange={(e) => setSearch(e.target.value)}
-                    className='input input-bordered rounded-md' type="text"
-                    placeholder='Search...'
+                    className="input input-bordered rounded-md" type="text"
+                    placeholder="Search..."
                 />
-                <button type='submit' className='btn bg-zinc-700 text-white'>
-                    <BiSearchAlt2 className='w-6 h-6 outline-none' />
+                <button type="submit" className="btn bg-zinc-700 text-white">
+                    <BiSearchAlt2 className="w-6 h-6 outline-none" />
                 </button>
             </form>
             <div className="divider px-3"></div>
-            <OtherUsers />
-            <div className='mt-2'>
-                <button onClick={logoutHandler} className='btn btn-sm'>Logout</button>
+            <OtherUsers onUserSelect={onUserSelect} />
+            <div className="mt-2">
+                <button onClick={logoutHandler} className="btn btn-sm">Logout</button>
             </div>
         </div>
     )

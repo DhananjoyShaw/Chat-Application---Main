@@ -1,20 +1,20 @@
 import React from 'react'
 import OtherUser from './OtherUser';
 import useGetOtherUsers from '../hooks/useGetOtherUsers';
-import {useSelector} from "react-redux";
+import { useSelector } from "react-redux";
 
-const OtherUsers = () => {
+const OtherUsers = ({ onUserSelect }) => {
     // my custom hook
     useGetOtherUsers();
-    const {otherUsers} = useSelector(store=>store.user);
+    const { otherUsers } = useSelector(store => store.user);
     if (!otherUsers) return; // early return in react
-     
+
     return (
         <div className='overflow-auto flex-1'>
             {
-                otherUsers?.map((user)=>{
+                otherUsers?.map((user) => {
                     return (
-                        <OtherUser key={user._id} user={user}/>
+                        <OtherUser key={user._id} user={user} onUserSelect={onUserSelect} />
                     )
                 })
             }
@@ -22,4 +22,4 @@ const OtherUsers = () => {
     )
 }
 
-export default OtherUsers
+export default OtherUsers;
