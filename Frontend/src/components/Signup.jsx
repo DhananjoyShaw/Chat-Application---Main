@@ -46,11 +46,11 @@ const Signup = () => {
   return (
     <div className="min-w-70 sm:min-w-96 sm:mx-auto">
       <div className='w-full p-6 rounded-lg shadow-md bg-gray-400 bg-clip-padding backdrop-filter backdrop-blur-md bg-opacity-10 border border-gray-100'>
-        <h1 className='text-3xl font-bold text-center'>Signup</h1>
+        <h1 className='text-3xl font-bold text-center text-gray-100'>Signup</h1>
         <form onSubmit={onSubmitHandler} action="">
           <div>
             <label className='label p-2'>
-              <span className='text-base label-text'>Full Name</span>
+              <span className='text-base label-text text-gray-100'>Full Name</span>
             </label>
             <input
               value={user.fullName}
@@ -61,7 +61,7 @@ const Signup = () => {
           </div>
           <div>
             <label className='label p-2'>
-              <span className='text-base label-text'>Username</span>
+              <span className='text-base label-text text-gray-100'>Username</span>
             </label>
             <input
               value={user.username}
@@ -72,7 +72,7 @@ const Signup = () => {
           </div>
           <div>
             <label className='label p-2'>
-              <span className='text-base label-text'>Password</span>
+              <span className='text-base label-text text-gray-100'>Password</span>
             </label>
             <input
               value={user.password}
@@ -83,7 +83,7 @@ const Signup = () => {
           </div>
           <div>
             <label className='label p-2'>
-              <span className='text-base label-text'>Confirm Password</span>
+              <span className='text-base label-text text-gray-100'>Confirm Password</span>
             </label>
             <input
               value={user.confirmPassword}
@@ -92,7 +92,7 @@ const Signup = () => {
               type="password"
               placeholder='Confirm Password' />
           </div>
-          <div className='flex items-center my-4'>
+          <div className='flex items-center my-4 text-gray-100'>
             <div className='flex items-center'>
               <p>Male</p>
               <input
@@ -112,9 +112,9 @@ const Signup = () => {
                 className="checkbox mx-2" />
             </div>
           </div>
-          <p className='text-center my-2'>Already have an account? <Link to="/login"> login </Link></p>
+          <p className='text-center my-2 text-gray-100'>Already have an account? <Link to="/login"> login </Link></p>
           <div>
-            <button type='submit' className='btn btn-block btn-sm mt-2 border border-slate-700'>Signup</button>
+            <button type='submit' className='btn btn-block btn-sm mt-2 border text-gray-100 border-slate-700'>Signup</button>
           </div>
         </form>
       </div>
