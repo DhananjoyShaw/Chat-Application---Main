@@ -41,15 +41,16 @@ const Sidebar = ({ onUserSelect }) => {
 
     return (
         <div className="flex flex-col border border-gray-900 p-4 md:h-[85vh] h-[650px] w-[320px]" style={{ borderRight: '1px solid #64748b' }}>
-            <form onSubmit={searchSubmitHandler} action="" className="flex items-center gap-2">
+            <form onSubmit={searchSubmitHandler} action="" className="flex items-center gap-1">
                 <input
                     value={search}
                     onChange={(e) => setSearch(e.target.value)}
                     className="input input-bordered rounded-md" type="text"
                     placeholder="Search..."
+
                 />
-                <button type="submit" className="btn bg-zinc-700 text-white">
-                    <BiSearchAlt2 className="w-6 h-6 outline-none" />
+                <button type="submit" className="btn bg-zinc-700">
+                    <BiSearchAlt2 className="w-5 h-5 outline-none" />
                 </button>
             </form>
             <div className="divider px-3"></div>
