@@ -14,7 +14,7 @@ const MessageContainer = () => {
         <>
             {
                 selectedUser !== null ? (
-                    <div className="flex flex-col md:min-w-[550px] md:h-[85vh] h-[650px] w-[300px] border border-gray-900">
+                    <div className="flex flex-col md:min-w-[550px] md:h-[85vh] h-[650px] w-[320px] border border-gray-900">
                         <div className="flex gap-2 items-center bg-zinc-800 text-white px-4 py-2 mb-2">
                             <div className={`avatar ${isOnline ? "online" : ""}`}>
                                 <div className="w-12 rounded-full">

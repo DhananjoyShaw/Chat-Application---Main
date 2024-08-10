@@ -40,7 +40,7 @@ const Sidebar = ({ onUserSelect }) => {
     }
 
     return (
-        <div className="flex flex-col border border-gray-900 p-4 md:h-[85vh] h-[650px] w-[300px]" style={{ borderRight: '1px solid #64748b' }}>
+        <div className="flex flex-col border border-gray-900 p-4 md:h-[85vh] h-[650px] w-[320px]" style={{ borderRight: '1px solid #64748b' }}>
             <form onSubmit={searchSubmitHandler} action="" className="flex items-center gap-2">
                 <input
                     value={search}
@@ -55,7 +55,7 @@ const Sidebar = ({ onUserSelect }) => {
             <div className="divider px-3"></div>
             <OtherUsers onUserSelect={onUserSelect} />
             <div className="mt-2">
-                <button onClick={logoutHandler} className="btn btn-sm">Logout</button>
+                <button onClick={logoutHandler} className="btn btn-sm bg-purple-600 hover:bg-purple-900">Logout</button>
             </div>
         </div>
     )

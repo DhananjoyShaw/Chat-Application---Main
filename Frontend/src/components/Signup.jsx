@@ -112,9 +112,9 @@ const Signup = () => {
                 className="checkbox mx-2" />
             </div>
           </div>
-          <p className='text-center my-2 text-gray-100'>Already have an account? <Link to="/login"> login </Link></p>
+          <p className='text-center my-2 text-gray-100'>Already have an account? <Link to="/login" className="text-blue-500 my-1"> login </Link></p>
           <div>
-            <button type='submit' className='btn btn-block btn-sm mt-2 border text-gray-100 border-slate-700'>Signup</button>
+            <button type='submit' className='btn btn-block btn-sm mt-2 bg-purple-600 hover:bg-purple-900 text-gray-100 border border-slate-700'>Signup</button>
           </div>
         </form>
       </div>

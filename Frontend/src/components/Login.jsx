@@ -63,9 +63,9 @@ const Login = () => {
               type="password"
               placeholder='Password' />
           </div>
-          <p className='text-center my-2 text-gray-100'>Don't have an account? <Link to="/signup"> signup </Link></p>
+          <p className='text-center my-2 text-gray-100'>Don't have an account? <Link to="/signup" className="text-blue-500 my-1"> signup </Link></p>
           <div>
-            <button type="submit" className='btn btn-block btn-sm text-gray-100 mt-2 border border-slate-700'>Login</button>
+            <button type="submit" className='btn btn-block btn-sm mt-2 bg-purple-600 hover:bg-purple-900 text-gray-100 border hover:border-slate-700'>Login</button>
           </div>
         </form>
       </div>
