@@ -2,7 +2,7 @@
 
 ## Live Link
 
-[Chat Application](https://chat-application-client-ocj9.onrender.com)
+[Chat Application](https://chat-application-frontend-jtzm.onrender.com)
 
 ## Description
 

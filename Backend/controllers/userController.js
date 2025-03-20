@@ -7,7 +7,6 @@ export const register = async (req, res) => {
     try {
         const { fullName, username, password, confirmPassword, gender } = req.body;
 
-        // Validate input
         if (!fullName || !username || !password || !confirmPassword || !gender) {
             return res.status(400).json({ message: "All fields are required" });
         }
@@ -15,13 +14,11 @@ export const register = async (req, res) => {
             return res.status(400).json({ message: "Passwords do not match" });
         }
 
-        // Check if username already exists
         const user = await User.findOne({ username });
         if (user) {
             return res.status(400).json({ message: "Username already exists, try a different one" });
         }
 
-        // Hash password
         const hashedPassword = await bcrypt.hash(password, 10);
 
         let profilePhoto = "";
@@ -55,12 +52,10 @@ export const login = async (req, res) => {
     try {
         const { username, password } = req.body;
 
-        // Validate input
         if (!username || !password) {
             return res.status(400).json({ message: "All fields are required" });
         }
 
-        // Check if user exists
         const user = await User.findOne({ username });
         if (!user) {
             return res.status(400).json({
@@ -69,7 +64,6 @@ export const login = async (req, res) => {
             });
         }
 
-        // Check password match
         const isPasswordMatch = await bcrypt.compare(password, user.password);
         if (!isPasswordMatch) {
             return res.status(400).json({
@@ -78,11 +72,9 @@ export const login = async (req, res) => {
             });
         }
 
-        // Generate JWT token
         const tokenData = { userId: user._id };
         const token = jwt.sign(tokenData, process.env.JWT_SECRET_KEY, { expiresIn: '1d' });
 
-        // Send response with cookie
         return res.status(200).cookie("token", token, {
             maxAge: 1 * 24 * 60 * 60 * 1000,
             httpOnly: true,
