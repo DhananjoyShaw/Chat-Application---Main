@@ -24,7 +24,7 @@ export const register = async (req, res) => {
         let profilePhoto = "";
         if (req.file) {
             try {
-                const uploadResponse = await uploadOnCloudinary(req.file.path);
+                const uploadResponse = await uploadOnCloudinary(req.file.buffer, req.file.mimetype);
                 if (uploadResponse) profilePhoto = uploadResponse.secure_url;
             } catch (uploadError) {
                 console.error('Cloudinary upload error:', uploadError);
