@@ -4,6 +4,7 @@ dotenv.config({});
 import connectDB from "./config/database.js";
 import userRoute from "./routes/userRoute.js";
 import messageRoute from "./routes/messageRoute.js";
+import groupRoute from "./routes/groupRoute.js"
 import cookieParser from "cookie-parser";
 import { app, server } from "./socket/socket.js";
 import cors from "cors";
@@ -14,7 +15,7 @@ const PORT = process.env.PORT || 5000;
 
 // middleware
 app.use(cors({
-    origin: 'https://chat-application-client-ocj9.onrender.com',
+    origin: 'http://localhost:5173',
     credentials: true,
     methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
     allowedHeaders: ['Content-Type', 'Authorization', 'X-Requested-With']
@@ -26,6 +27,7 @@ app.use(cookieParser());
 // routes
 app.use("/api/v1/user", userRoute);
 app.use("/api/v1/message", messageRoute);
+app.use("/api/v1/group", groupRoute);
 
 server.listen(PORT, () => {
     connectDB();

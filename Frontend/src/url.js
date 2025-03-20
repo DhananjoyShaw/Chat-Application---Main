@@ -1,1 +1,1 @@
-export const URL = "https://chat-application-server-olch.onrender.com";
+export const URL = "http://localhost:8000";

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
-import Sidebar from './Sidebar'
-import MessageContainer from './MessageContainer'
+import Sidebar from './sidebar/Sidebar'
+import MessageContainer from './messagebar/MessageContainer'
 import { useSelector } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
 

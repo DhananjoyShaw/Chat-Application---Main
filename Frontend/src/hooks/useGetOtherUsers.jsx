@@ -14,8 +14,7 @@ const useGetOtherUsers = () => {
         const fetchOtherUsers = async () => {
             try {
                 const res = await axios.get(`${URL}/api/v1/user`);
-                // Store data in Redux
-                console.log("Other users ->", res.data);
+                // console.log("Other users ->", res.data);
                 dispatch(setOtherUsers(res.data));
             } catch (error) {
                 console.error("Error fetching other users:", error.response ? error.response.data : error.message);
@@ -23,7 +22,7 @@ const useGetOtherUsers = () => {
         };
 
         fetchOtherUsers();
-    }, [dispatch]); // Include dispatch in dependency array
+    }, [dispatch]); 
 };
 
 export default useGetOtherUsers;

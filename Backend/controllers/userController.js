@@ -1,6 +1,7 @@
 import { User } from "../models/userModel.js";
 import bcrypt from "bcryptjs";
 import jwt from "jsonwebtoken";
+import { uploadOnCloudinary } from "../utils/cloudinary.js";
 
 export const register = async (req, res) => {
     try {
@@ -23,18 +24,22 @@ export const register = async (req, res) => {
         // Hash password
         const hashedPassword = await bcrypt.hash(password, 10);
 
-        // Create profile photo URL
-        const maleProfilePhoto = `https://avatar.iran.liara.run/public/boy?username=${username}`;
-        const femaleProfilePhoto = `https://avatar.iran.liara.run/public/girl?username=${username}`;
+        let profilePhoto = "";
+        if (req.file) {
+            const uploadResponse = await uploadOnCloudinary(req.file.path);
+            if (uploadResponse) profilePhoto = uploadResponse.secure_url;
+        }
 
         // Create new user
-        await User.create({
+        const newUser = await User.create({
             fullName,
             username,
             password: hashedPassword,
-            profilePhoto: gender === "male" ? maleProfilePhoto : femaleProfilePhoto,
-            gender
+            gender,
+            profilePhoto
         });
+
+        await newUser.save();
 
         return res.status(201).json({
             message: "Account created successfully.",

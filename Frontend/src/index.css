@@ -2,9 +2,9 @@
 @tailwind components;
 @tailwind utilities;
 
-body{
-    margin:0;
-    background-image: url(/bgp.jpg);
-    background-size: cover;
-    background-repeat: no-repeat ;
+body {
+  margin: 0;
+  background-image: url(/bgp.jpg);
+  background-size: cover;
+  background-repeat: no-repeat;
 }
