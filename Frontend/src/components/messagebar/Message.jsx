@@ -28,7 +28,15 @@ const Message = ({ message, isGroup = false }) => {
 
         // Handle image files
         if (fileType.startsWith('image/')) {
-            return <img src={message.fileUrl} alt="Shared image" className="max-w-full max-h-30 rounded mt-2" />;
+            return (
+                <div className="max-w-full overflow-hidden pt-1 rounded-xl">
+                    <img
+                        src={message.fileUrl}
+                        alt="Shared image"
+                        className="max-w-full object-contain rounded-lg"
+                    />
+                </div>
+            );
         }
 
         // Handle video files
