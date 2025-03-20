@@ -31,8 +31,8 @@ const MessageContainer = () => {
                 <div className="flex flex-col md:min-w-[640px] md:h-[85vh] h-[650px] w-[320px] border border-gray-800">
                     <div className="flex gap-2 items-center bg-zinc-800 text-white px-4 py-2 mb-2">
                         <div className={`avatar ${isOnline ? "online" : ""}`}>
-                            <div className="w-12 rounded-full">
-                                <img src={selectedUser?.profilePhoto} alt="user-profile" />
+                            <div className="w-12 h-12">
+                                <img src={selectedUser?.profilePhoto} alt="user-profile" className="w-12 h-12 rounded-full object-cover" />
                             </div>
                         </div>
                         <div className="flex flex-col flex-1">
@@ -45,8 +45,8 @@ const MessageContainer = () => {
             ) : selectedGroup ? (
                 <div className="flex flex-col md:min-w-[640px] md:h-[85vh] h-[650px] w-[320px] border border-gray-800">
                     <div className="flex gap-2 items-center bg-zinc-800 text-white px-4 py-2 mb-2">
-                        <div className="w-12 ">
-                            <img src={selectedGroup?.groupPhoto} alt="user-profile" className="rounded-full" />
+                        <div className="w-12 h-12 ">
+                            <img src={selectedGroup?.groupPhoto} alt="user-profile" className="w-12 h-12 rounded-full object-cover" />
                         </div>
                         <div className="flex flex-col flex-1">
                             <p className="text-lg font-bold">{selectedGroup?.name}</p>
@@ -59,7 +59,7 @@ const MessageContainer = () => {
                     <SendInput isGroup={true} />
                 </div>
             ) : (
-                <div className="md:min-w-[550px] flex flex-col justify-center items-center">
+                <div className="md:min-w-[640px] flex flex-col justify-center items-center">
                     <h1 className="text-4xl text-white font-bold">Hi, {authUser?.fullName}</h1>
                     <h1 className="text-2xl text-white">Let's start a conversation</h1>
                 </div>
