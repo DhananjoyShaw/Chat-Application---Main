@@ -42,6 +42,7 @@ const Signup = () => {
       formData.append("password", user.password);
       formData.append("confirmPassword", user.confirmPassword);
       formData.append("gender", user.gender);
+      
       if (user.profilePhoto) {
         formData.append("profilePhoto", user.profilePhoto);
       }
