@@ -57,12 +57,12 @@ const HomePage = () => {
 
   return (
     <div className="flex md:w-auto md:flex-row md:h-[85vh] rounded-lg overflow-hidden bg-clip-padding backdrop-filter backdrop-blur-lg bg-opacity-0">
-      {isSidebarVisible && (
+      <div className={`${isSmallScreen && !isSidebarVisible ? 'hidden' : 'block'} `}>
         <Sidebar onUserSelect={handleUserSelect} />
-      )}
-      {(!isSidebarVisible && (selectedUser || selectedGroup)) && (
+      </div>
+      <div className={`${isSmallScreen && isSidebarVisible ? 'hidden' : 'block'} `}>
         <MessageContainer />
-      )}
+      </div>
     </div>
   );
 };

@@ -59,7 +59,7 @@ const MessageContainer = () => {
                     <SendInput isGroup={true} />
                 </div>
             ) : (
-                <div className="md:min-w-[640px] flex flex-col justify-center items-center">
+                <div className="md:min-w-[640px] flex flex-col justify-center items-center w-full h-full text-center ">
                     <h1 className="text-4xl text-white font-bold">Hi, {authUser?.fullName}</h1>
                     <h1 className="text-2xl text-white">Let's start a conversation</h1>
                 </div>
