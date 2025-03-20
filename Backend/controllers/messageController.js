@@ -25,7 +25,7 @@ export const sendMessage = async (req, res) => {
         let fileType = null;
 
         if (file) {
-            const result = await uploadOnCloudinary(file.path);
+            const result = await uploadOnCloudinary(file.buffer, file.mimetype);
             if (result) {
                 fileUrl = result.secure_url;
                 fileName = file.originalname;
@@ -73,5 +73,6 @@ export const getMessage = async (req, res) => {
         return res.status(200).json(conversation?.messages);
     } catch (error) {
         console.log(error);
+        res.status(500).json({ error: "Internal Server Error" });
     }
-}
+};

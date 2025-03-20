@@ -21,8 +21,12 @@ export const createGroup = async (req, res) => {
 
         let groupPhoto = "";
         if (req.file) {
-            const uploadResponse = await uploadOnCloudinary(req.file.path);
-            if (uploadResponse) groupPhoto = uploadResponse.secure_url;
+            try {
+                const uploadResponse = await uploadOnCloudinary(req.file.buffer, req.file.mimetype);
+                if (uploadResponse) groupPhoto = uploadResponse.secure_url;
+            } catch (uploadError) {
+                console.error('Cloudinary upload error:', uploadError);
+            }
         }
 
         const newGroup = await Group.create({
